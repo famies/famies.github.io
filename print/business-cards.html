@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Famies Enterprises business cards, 10-up letter sheet</title>
+<style>
+  /* Gartner Studios 65517 (template tmplt0117): US Letter, 10 cards of 3.5 x 2 in,
+     2 columns x 5 rows, no gutters. Adjust the two margins if the test print is off. */
+  :root {
+    --top: 0.5in;
+    --left: 0.75in;
+    --green: #15803d;
+    --dark: #14532d;
+    --ink: #1f2937;
+    --muted: #6b7280;
+  }
+  @page { size: letter; margin: 0; }
+  html, body { margin: 0; padding: 0; background: #fff; }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: var(--ink);
+         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet { width: 8.5in; height: 11in; position: relative; page-break-after: always; overflow: hidden; }
+  .grid { position: absolute; top: var(--top); left: var(--left);
+          display: grid; grid-template-columns: 3.5in 3.5in; grid-template-rows: repeat(5, 2in); }
+  .card { width: 3.5in; height: 2in; box-sizing: border-box; position: relative; overflow: hidden;
+          padding: 0.18in 0.22in 0.16in 0.22in; display: flex; flex-direction: column; }
+  .guides .card { outline: 0.5pt dashed #bbb; outline-offset: -0.25pt; }
+  .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 0.14in; background: var(--green); }
+  .card > * { margin-left: 0.1in; }
+  .brand { font-size: 12.5pt; font-weight: 700; color: var(--dark); letter-spacing: 0.01em; line-height: 1.1; }
+  .tag { font-size: 6.8pt; color: var(--muted); margin-top: 1.5pt; letter-spacing: 0.02em; text-transform: uppercase; }
+  .name { margin-top: auto; font-size: 11pt; font-weight: 700; line-height: 1.15; }
+  .role { font-size: 7.5pt; color: var(--green); font-weight: 600; margin-top: 1pt; }
+  .contact { margin-top: 5pt; font-size: 7.2pt; line-height: 1.45; color: var(--ink); }
+  .contact span { display: block; }
+  .foot { margin-top: 4pt; padding-top: 3pt; border-top: 0.5pt solid #d1d5db; font-size: 6pt; color: var(--muted);
+          display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="grid" id="grid"></div>
+</div>
+<template id="card">
+  <div class="card">
+    <div class="bar"></div>
+    <div class="brand">Famies Enterprises</div>
+    <div class="tag">Land banking &middot; Site inspection &middot; Enugu</div>
+    <div class="name">Ifeanyi Ozouwakwe</div>
+    <div class="role">Principal Agent</div>
+    <div class="contact">
+      <span>+234 813 829 0226 &middot; WhatsApp</span>
+      <span>ozouwakweio@gmail.com</span>
+      <span>13 Boardman Street, Uwani, Enugu</span>
+    </div>
+    <div class="foot"><span>famies.github.io/web</span><span>CAC Reg. 9754637</span></div>
+  </div>
+</template>
+<script>
+  // ?guides=1 draws dashed card outlines for a plain-paper test print.
+  const grid = document.getElementById('grid');
+  const t = document.getElementById('card');
+  for (let i = 0; i < 10; i++) grid.appendChild(t.content.cloneNode(true));
+  if (new URLSearchParams(location.search).get('guides')) document.body.classList.add('guides');
+</script>
+</body>
+</html>

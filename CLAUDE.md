@@ -3,7 +3,9 @@
 Website for Famies Enterprises, Ifeanyi's real-estate business in Enugu (land banking, site-and-service plots, physical verification of property). Mike Agu is building it for him.
 
 ## Where things stand
-* `index.html` is the first draft: one page, Tailwind from the CDN, a contact form written for Netlify Forms. It has not been published anywhere.
+* `index.html` is one page, Tailwind from the CDN. Contact is by WhatsApp and email links (no form; GitHub Pages cannot process one). It is to be published on GitHub Pages as `famies/web` (https://famies.github.io/web/) once the `famies` org exists.
+* `print/business-cards.html` is a 10-up US Letter sheet for Gartner Studios 65517 card stock (2 x 3.5 in, 2 columns x 5 rows, 0.5 in top and 0.75 in side margins). Render it with headless Chrome to `print/business-cards.pdf`; `?guides=1` adds dashed outlines for a plain-paper test print.
+* Spotter is not named or linked on the site. The "We look before you buy" section describes the screening (satellite imagery, building growth, terrain) without naming the tool, because Spotter is private and not open to invitation; Ifeanyi shares screenshots with clients, nobody else gets access.
 * This is a separate project from Spotter (`../geoai-land-speculator`). Spotter is Mike's private land-research tool and has no agent or seller features; do not add listings or Famies branding there, and do not copy Spotter's data or maps into this site. Ifeanyi uses Spotter as an invited member, like anyone else.
 
 ## Rules for the copy
