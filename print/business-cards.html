@@ -24,7 +24,8 @@
   .card { width: 3.5in; height: 2in; box-sizing: border-box; position: relative; overflow: hidden;
           padding: 0.18in 0.22in 0.16in 0.22in; display: flex; flex-direction: column; }
   .guides .card { outline: 0.5pt dashed #bbb; outline-offset: -0.25pt; }
-  .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 0.14in; background: var(--green); }
+  /* Inset from the card edge so the solid never sits on a perforation, where toner flakes. */
+  .bar { position: absolute; left: 0.12in; top: 0.16in; bottom: 0.16in; width: 0.08in; background: var(--green); border-radius: 0.04in; }
   .card > * { margin-left: 0.1in; }
   .brand { font-size: 12.5pt; font-weight: 700; color: var(--dark); letter-spacing: 0.01em; line-height: 1.1; }
   .tag { font-size: 6.8pt; color: var(--muted); margin-top: 1.5pt; letter-spacing: 0.02em; text-transform: uppercase; }
