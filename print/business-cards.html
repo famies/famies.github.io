@@ -21,12 +21,18 @@
   .sheet { width: 8.5in; height: 11in; position: relative; page-break-after: always; overflow: hidden; }
   .grid { position: absolute; top: var(--top); left: var(--left);
           display: grid; grid-template-columns: 3.5in 3.5in; grid-template-rows: repeat(5, 2in); }
-  .card { width: 3.5in; height: 2in; box-sizing: border-box; position: relative; overflow: hidden;
-          padding: 0.18in 0.22in 0.16in 0.22in; display: flex; flex-direction: column; }
+  .card { width: 3.5in; height: 2in; box-sizing: border-box; position: relative;
+          padding: 0.18in 0.22in 0.16in 0.32in; display: flex; flex-direction: column; }
   .guides .card { outline: 0.5pt dashed #bbb; outline-offset: -0.25pt; }
-  /* Inset from the card edge so the solid never sits on a perforation, where toner flakes. */
-  .bar { position: absolute; left: 0.12in; top: 0.16in; bottom: 0.16in; width: 0.08in; background: var(--green); border-radius: 0.04in; }
-  .card > * { margin-left: 0.1in; }
+  /* The bar bleeds past the card edge into the sheet margin and runs continuously
+     through the rows, so a slightly-off perforation never shows a white sliver.
+     Left-column cards carry it on the left, right-column cards on the right, so the
+     shared centre perforation stays white on both sides. */
+  .bar { position: absolute; top: -0.1in; bottom: -0.1in; width: 0.24in; background: var(--green); }
+  .card:nth-child(odd) .bar { left: -0.1in; }
+  .card:nth-child(even) .bar { right: -0.1in; }
+  .card:nth-child(even) { padding-left: 0.22in; padding-right: 0.32in; }
+  .card:nth-child(even) .qr { right: 0.32in; }
   .brand { font-size: 12.5pt; font-weight: 700; color: var(--dark); letter-spacing: 0.01em; line-height: 1.1; }
   .tag { font-size: 6.8pt; color: var(--muted); margin-top: 1.5pt; letter-spacing: 0.02em; text-transform: uppercase; }
   .name { margin-top: auto; font-size: 11pt; font-weight: 700; line-height: 1.15; }
